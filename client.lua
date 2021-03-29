@@ -13,21 +13,22 @@ int GET_VEHICLE_WINDOW_TINT(Vehicle vehicle);
 --1 = Pure Black - Illegal
 --6 = Green - Legal
 
+RegisterCommand('tint', function(source, args)
+    TriggerEvent('CheckTint')
+end, false)
+
 RegisterNetEvent('CheckTint')
 AddEventHandler('CheckTint', function()
     local distanceToCheck = 5.0
-    local ped = GetPlayerPed( -1 )
+    local ped = PlayerPedId()
 
-    if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
-        local pos = GetEntityCoords( ped )
+    if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then
         local playerPos = GetEntityCoords( ped, 1 )
         local inFrontOfPlayer = GetOffsetFromEntityInWorldCoords( ped, 0.0, distanceToCheck, 0.0 )
         local vehicle = GetVehicleInDirection( playerPos, inFrontOfPlayer )
 
         if ( DoesEntityExist( vehicle ) ) then 
             SetEntityAsMissionEntity( vehicle, true, true )
-            print(GetVehicleWindowTint( vehicle ))
-
             if GetVehicleWindowTint( vehicle ) == 6 then
                 ShowInfo("Legal Tint")
             elseif GetVehicleWindowTint( vehicle ) == 5 then
@@ -46,7 +47,6 @@ AddEventHandler('CheckTint', function()
                 ShowInfo("Legal Tint")
             end
         end
-        
     end
 end)
 

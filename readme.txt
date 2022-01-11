@@ -5,6 +5,6 @@ Installation
 
 ['tintchecker'] 				 = {['name'] = 'tintchecker', 			  	  	['label'] = 'tintchecker', ['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'tintchecker.png', 				['unique'] = true,   	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = 'Device used for checking legality of vehicle tint'},
 
-3. Should be obvious but put qb-tintchecker in your resources and "ensure" either the folder or the resource.
+3. Should be obvious but put qb-tintcheck in your resources and "ensure" either the folder or the resource.
 
 
